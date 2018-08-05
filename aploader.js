@@ -69,17 +69,21 @@ function scaleImage(url, width, height, callback){
 }
 
 function drawImage(content, details) {
-    document.getElementById('filePreview').innerHTML +=
-        '<div class="preview">' +
-        '  <div class="image">' +
+    document.getElementById('ap-filepreview').innerHTML +=
+        '<div class="ap-preview">' +
+        '  <div class="ap-image">' +
         '     <img>' +
         '  </div>' +
-        '  <div class="overlay">' +
-        '    <div class="details">' +
-        details.name + "\n" +
-        Math.round(details.size/1000) + "Kb" +
+        '  <div class="ap-overlay">' +
+        '    <div class="ap-details">' +
+        '       <div class="ap-size">' +
+                    Math.round(details.size/1000) + "Kb" +
+        '       </div>' +
+        '       <div class="ap-name">' +
+                    details.name +
+        '       </div>' +
         '    </div>' +
         '  </div>' +
         '</div>';
-    document.getElementById("filePreview").querySelector("div.preview:last-child div.image img").setAttribute('src', content);
+    document.getElementById("ap-filepreview").querySelector("div.ap-preview:last-child div.ap-image img").setAttribute('src', content);
 }
