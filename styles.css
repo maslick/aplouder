@@ -1,4 +1,4 @@
-#upload {
+#aploader {
     padding: 10px;
     width: 660px;
     margin: 0 auto;
@@ -44,7 +44,7 @@
 }
 
 .image {
-    border-radius: 20px;
+    border-radius: 10px;
     overflow: hidden;
     width: 120px;
     height: 120px;
@@ -62,7 +62,7 @@
     opacity: 0;
     transition: .7s ease;
     background-color: #9eb6ba;
-    border-radius: 20px;
+    border-radius: 10px;
     cursor: default;
 }
 
