@@ -77,7 +77,7 @@ function drawImage(content, details) {
         '  <div class="ap-overlay">' +
         '    <div class="ap-details">' +
         '       <div class="ap-size">' +
-                    Math.round(details.size/1000) + "Kb" +
+                    formatFileSize(details.size) +
         '       </div>' +
         '       <div class="ap-name">' +
                     details.name +
@@ -86,4 +86,10 @@ function drawImage(content, details) {
         '  </div>' +
         '</div>';
     document.getElementById("ap-filepreview").querySelector("div.ap-preview:last-child div.ap-image img").setAttribute('src', content);
+}
+
+function formatFileSize(bytes) {
+    if (bytes < 1000) return bytes + " bytes";
+    if (bytes >= 1000 && bytes <= 1000*1000) return Math.round(bytes / 1000) + " kB";
+    return Math.round(bytes / 1000000 * 10) / 10 + " MB";
 }
