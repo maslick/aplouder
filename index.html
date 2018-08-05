@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ap Loader</title>
+    <link rel="stylesheet" href="hoho.css">
+</head>
+<body>
+    <form action="">
+        <div id="upload">
+            <input type="file" id="images" class="inputfile" multiple="multiple" name="chapter[images][]">
+            <label for="images">
+                <strong>Choose a file</strong>
+            </label>
+            <div id="selected_files"></div>
+            <div id="filePreview"></div>
+        </div>
+
+        <div id="submit">
+            <input type="submit" value="submit">
+        </div>
+    </form>
+
+</body>
+</html>
+
+<script>
+    var fileInput = document.querySelector('.inputfile');
+    var selected_files = document.querySelector('#selected_files');
+
+    fileInput.addEventListener('change', function (n) {
+        var files = this.files;
+        for (var i = 0; i < files.length; i++) {
+            var file = files[i];
+            selected_files.innerHTML += '<div class="individualFile">' + file.name + '</div>';
+            drawImage(file);
+        }
+    });
+
+    function drawImage(file) {
+        var reader = new FileReader();
+        reader.readAsDataURL(file, "UTF-8");
+        reader.onload = function (e) {
+            document.getElementById("filePreview").innerHTML += '<div class="thumb"><img>' + file.name + '</div>';
+            document.querySelector("#filePreview .thumb:last-child img").setAttribute('src', e.target.result);
+        };
+    }
+</script>
