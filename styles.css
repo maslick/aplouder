@@ -1,0 +1,83 @@
+#upload {
+    padding: 10px;
+    width: 660px;
+    margin: 0 auto;
+}
+
+/* hiding the input */
+.inputfile {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+/* file preview */
+.message {
+    text-align: center;
+    font-family: monospace;
+    font-size: 1.1em;
+    padding: 10px 0 20px 0;
+}
+
+#filePreview {
+    border: #c0b7b7 dashed 4px;
+    border-radius: 20px;
+    margin: 2em auto;
+    min-height: 150px;
+    padding: 20px;
+    cursor: pointer;
+}
+
+.preview {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    margin: 16px;
+    min-height: 100px;
+}
+
+.preview .image img {
+    display: block;
+}
+
+.image {
+    border-radius: 20px;
+    overflow: hidden;
+    width: 120px;
+    height: 120px;
+    position: relative;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: #9eb6ba;
+    border-radius: 20px;
+    cursor: default;
+}
+
+.preview:hover .overlay {
+    opacity: 1;
+}
+
+#filePreview .preview .details {
+    color: white;
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+}

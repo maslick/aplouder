@@ -3,46 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <title>Ap Loader</title>
-    <link rel="stylesheet" href="hoho.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <form action="">
-        <div id="upload">
-            <input type="file" id="images" class="inputfile" multiple="multiple" name="chapter[images][]">
-            <label for="images">
-                <strong>Choose a file</strong>
-            </label>
-            <div id="selected_files"></div>
-            <div id="filePreview"></div>
-        </div>
 
-        <div id="submit">
-            <input type="submit" value="submit">
+    <div id="upload">
+        <input type="file" id="images" class="inputfile" multiple="multiple" name="chapter[images][]">
+        <div id="filePreview">
+            <div class="message">Drop files here or click to upload</div>
         </div>
-    </form>
+    </div>
 
 </body>
 </html>
 
 <script>
-    var fileInput = document.querySelector('.inputfile');
-    var selected_files = document.querySelector('#selected_files');
+    document.getElementById("upload").addEventListener('dragover', function (event) {
+        event.preventDefault();
+    }, true);
 
-    fileInput.addEventListener('change', function (n) {
+    document.getElementById("upload").addEventListener('drop', function (event) {
+        event.preventDefault();
+        // document.getElementsByClassName("message")[0].style.display = 'none';
+        var allTheFiles = event.dataTransfer.files;
+        for (let i = 0; i < allTheFiles.length; i++)
+            drawImage(allTheFiles[i]);
+    }, true);
+
+    document.getElementById("upload").addEventListener('click', function () {
+        document.getElementById("images").click();
+    }, true);
+
+    document.querySelector('.inputfile').addEventListener('change', function (n) {
+        // document.getElementsByClassName("message")[0].style.display = 'none';
         var files = this.files;
         for (var i = 0; i < files.length; i++) {
-            var file = files[i];
-            selected_files.innerHTML += '<div class="individualFile">' + file.name + '</div>';
-            drawImage(file);
+            drawImage(files[i]);
         }
-    });
+    }, true);
 
     function drawImage(file) {
         var reader = new FileReader();
-        reader.readAsDataURL(file, "UTF-8");
+        reader.readAsDataURL(file, 'UTF-8');
         reader.onload = function (e) {
-            document.getElementById("filePreview").innerHTML += '<div class="thumb"><img>' + file.name + '</div>';
-            document.querySelector("#filePreview .thumb:last-child img").setAttribute('src', e.target.result);
+            document.getElementById('filePreview').innerHTML +=
+                '<div class="preview">' +
+                '  <div class="image">' +
+                '     <img>' +
+                '  </div>' +
+                '  <div class="overlay">' +
+                '    <div class="details">' +
+                       file.name + "\n" +
+                       Math.round(file.size/1000) + "Kb" +
+                '    </div>' +
+                '  </div>' +
+                '</div>';
+            document.getElementById("filePreview").querySelector("div.preview:last-child div.image img").setAttribute('src', e.target.result);
         };
     }
 </script>
