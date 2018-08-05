@@ -18,47 +18,56 @@
 </html>
 
 <script>
-    document.getElementById("upload").addEventListener('dragover', function (event) {
-        event.preventDefault();
+    document.getElementById("upload").addEventListener('dragover', function (e) {
+        e.preventDefault();
     }, true);
 
-    document.getElementById("upload").addEventListener('drop', function (event) {
-        event.preventDefault();
-        // document.getElementsByClassName("message")[0].style.display = 'none';
-        var allTheFiles = event.dataTransfer.files;
-        for (let i = 0; i < allTheFiles.length; i++)
-            drawImage(allTheFiles[i]);
+    document.getElementById("upload").addEventListener('drop', function (e) {
+        e.preventDefault();
+        var allTheFiles = e.dataTransfer.files;
+        for (let i = 0; i < allTheFiles.length; i++) {
+            processFile(allTheFiles[i]);
+        }
     }, true);
 
     document.getElementById("upload").addEventListener('click', function () {
         document.getElementById("images").click();
     }, true);
 
-    document.querySelector('.inputfile').addEventListener('change', function (n) {
-        // document.getElementsByClassName("message")[0].style.display = 'none';
+    document.querySelector('.inputfile').addEventListener('change', function (e) {
         var files = this.files;
         for (var i = 0; i < files.length; i++) {
-            drawImage(files[i]);
+            processFile(files[i]);
         }
     }, true);
 
-    function drawImage(file) {
+    function processFile(file) {
         var reader = new FileReader();
-        reader.readAsDataURL(file, 'UTF-8');
         reader.onload = function (e) {
-            document.getElementById('filePreview').innerHTML +=
-                '<div class="preview">' +
-                '  <div class="image">' +
-                '     <img>' +
-                '  </div>' +
-                '  <div class="overlay">' +
-                '    <div class="details">' +
-                       file.name + "\n" +
-                       Math.round(file.size/1000) + "Kb" +
-                '    </div>' +
-                '  </div>' +
-                '</div>';
-            document.getElementById("filePreview").querySelector("div.preview:last-child div.image img").setAttribute('src', e.target.result);
+            var content = e.target.result;
+            drawImage(resizeImage(content), {size: file.size, name: file.name});
         };
+        reader.readAsDataURL(file);
     }
+
+    function resizeImage(file) {
+        return file;
+    }
+
+    function drawImage(content, file) {
+        document.getElementById('filePreview').innerHTML +=
+            '<div class="preview">' +
+            '  <div class="image">' +
+            '     <img>' +
+            '  </div>' +
+            '  <div class="overlay">' +
+            '    <div class="details">' +
+            file.name + "\n" +
+            Math.round(file.size/1000) + "Kb" +
+            '    </div>' +
+            '  </div>' +
+            '</div>';
+        document.getElementById("filePreview").querySelector("div.preview:last-child div.image img").setAttribute('src', content);
+    }
+
 </script>
