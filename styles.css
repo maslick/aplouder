@@ -6,6 +6,8 @@
 
 #ap-droparea.highlight {
     background-color: aliceblue;
+    outline: #c0b7b7 solid 1px;
+    border-style: solid;
 }
 
 /* file preview */
@@ -14,24 +16,37 @@
     font-family: monospace;
     font-size: 1.1em;
     padding: 10px 0 20px 0;
+    cursor: pointer;
+}
+
+.box-icon {
+    width: 100%;
+    height: 80px;
+    fill: #9a9da4;
+    display: block;
+    margin-bottom: 40px;
+}
+
+.box-icon:hover {
+    fill: #cdd1d8;
 }
 
 #ap-droparea {
     border: #c0b7b7 dashed 2px;
-    border-radius: 0px;
+    border-radius: 0;
     margin: 2em auto;
     min-height: 150px;
     padding: 20px;
-    cursor: pointer;
     text-align: center;
     background-color: white;
+    box-sizing: border-box;
 }
 
 .ap-preview {
     position: relative;
     display: inline-block;
     vertical-align: top;
-    margin: 16px;
+    margin: 15px;
     min-height: 100px;
 }
 
@@ -40,7 +55,7 @@
 }
 
 .ap-image {
-    border-radius: 10px;
+    border-radius: 5px;
     overflow: hidden;
     width: 120px;
     height: 120px;
@@ -56,9 +71,9 @@
     height: 100%;
     width: 100%;
     opacity: 0;
-    transition: .7s ease;
+    transition: .3s ease;
     background-color: #9eb6ba;
-    border-radius: 10px;
+    border-radius: 5px;
     cursor: default;
 }
 

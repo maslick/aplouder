@@ -1,52 +1,60 @@
 // drag and drop files
-document.getElementById("aplouder").addEventListener('drop', function (e) {
+var dropArea = document.getElementById("ap-droparea");
+
+dropArea.addEventListener('drop', function (e) {
     preventDefaults(e);
     var files = e.dataTransfer.files;
     for (let i = 0; i < files.length; i++) {
-        processFile(files[i], function (fi, fiInfo) {
-            scaleImage(fi, 120, 120, function (canvas) {
-                drawImage(canvas.toDataURL("image/jpeg"), fiInfo)
+        processFile(files[i], function (file, info) {
+            scaleImage(file, 120, 120, function (canvas) {
+                drawImage(canvas.toDataURL("image/jpeg"), info);
+                makeButtonClickable();
             });
         });
     }
 }, false);
 
-document.getElementById("aplouder").addEventListener('dragover', function (e) {
+dropArea.addEventListener('dragover', function (e) {
     e.preventDefault();
 }, true);
 
 // Highlight on drag
-document.getElementById("ap-droparea").addEventListener('dragenter', function (e) {
+dropArea.addEventListener('dragenter', function (e) {
     highlight(e);
 }, false);
 
-document.getElementById("ap-droparea").addEventListener('dragover', function (e) {
+dropArea.addEventListener('dragover', function (e) {
     highlight(e);
 }, false);
 
-document.getElementById("ap-droparea").addEventListener('dragleave', function (e) {
+dropArea.addEventListener('dragleave', function (e) {
     unhighlight(e);
 }, false);
 
-document.getElementById("ap-droparea").addEventListener('drop', function (e) {
+dropArea.addEventListener('drop', function (e) {
     unhighlight(e);
 }, false);
 
 // using a file manager after button click
 document.querySelector('.inputfile').addEventListener('change', function (e) {
     var files = this.files;
-    for (var i = 0; i < files.length; i++) {
+    for (let i = 0; i < files.length; i++) {
         processFile(files[i], function (fi, fiInfo) {
             scaleImage(fi, 120, 120, function (canvas) {
-                drawImage(canvas.toDataURL("image/jpeg"), fiInfo)
+                drawImage(canvas.toDataURL("image/jpeg"), fiInfo);
+                makeButtonClickable();
             });
         });
     }
-}, true);
+}, false);
 
-document.getElementById("aplouder").addEventListener('click', function () {
-    document.getElementById("images").click();
-}, true);
+function makeButtonClickable() {
+    document.getElementsByClassName("ap-message")[0].onclick = function () {
+        document.getElementById("images").click();
+    };
+}
+
+makeButtonClickable();
 
 function processFile(file, callback) {
     var reader = new FileReader();
@@ -86,7 +94,7 @@ function scaleImage(url, width, height, callback){
 }
 
 function drawImage(content, details) {
-    document.getElementById('ap-droparea').innerHTML +=
+    dropArea.innerHTML +=
         '<div class="ap-preview">' +
         '  <div class="ap-image">' +
         '     <img>' +
@@ -102,7 +110,7 @@ function drawImage(content, details) {
         '    </div>' +
         '  </div>' +
         '</div>';
-    document.getElementById("ap-droparea").querySelector("div.ap-preview:last-child div.ap-image img").setAttribute('src', content);
+    dropArea.querySelector("div.ap-preview:last-child div.ap-image img").setAttribute('src', content);
 }
 
 function formatFileSize(bytes) {
@@ -117,9 +125,9 @@ function preventDefaults(e) {
 }
 
 function highlight(e) {
-    document.getElementById("ap-droparea").classList.add('highlight');
+    dropArea.classList.add('highlight');
 }
 
 function unhighlight(e) {
-    document.getElementById("ap-droparea").classList.remove('highlight');
+    dropArea.classList.remove('highlight');
 }
