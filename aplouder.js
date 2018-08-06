@@ -1,5 +1,5 @@
 // drag and drop files
-document.getElementById("aploader").addEventListener('drop', function (e) {
+document.getElementById("aplouder").addEventListener('drop', function (e) {
     e.preventDefault();
     var files = e.dataTransfer.files;
     for (let i = 0; i < files.length; i++) {
@@ -11,7 +11,7 @@ document.getElementById("aploader").addEventListener('drop', function (e) {
     }
 }, true);
 
-document.getElementById("aploader").addEventListener('dragover', function (e) {
+document.getElementById("aplouder").addEventListener('dragover', function (e) {
     e.preventDefault();
 }, true);
 
@@ -27,7 +27,7 @@ document.querySelector('.inputfile').addEventListener('change', function (e) {
     }
 }, true);
 
-document.getElementById("aploader").addEventListener('click', function () {
+document.getElementById("aplouder").addEventListener('click', function () {
     document.getElementById("images").click();
 }, true);
 
