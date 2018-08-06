@@ -4,6 +4,10 @@
     margin: 0 auto;
 }
 
+#ap-droparea.highlight {
+    background-color: aliceblue;
+}
+
 /* file preview */
 .ap-message {
     text-align: center;
@@ -12,14 +16,15 @@
     padding: 10px 0 20px 0;
 }
 
-#ap-filepreview {
-    border: #c0b7b7 dashed 3px;
-    border-radius: 5px;
+#ap-droparea {
+    border: #c0b7b7 dashed 2px;
+    border-radius: 0px;
     margin: 2em auto;
     min-height: 150px;
     padding: 20px;
     cursor: pointer;
     text-align: center;
+    background-color: white;
 }
 
 .ap-preview {

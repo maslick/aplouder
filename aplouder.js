@@ -1,6 +1,6 @@
 // drag and drop files
 document.getElementById("aplouder").addEventListener('drop', function (e) {
-    e.preventDefault();
+    preventDefaults(e);
     var files = e.dataTransfer.files;
     for (let i = 0; i < files.length; i++) {
         processFile(files[i], function (fi, fiInfo) {
@@ -9,11 +9,28 @@ document.getElementById("aplouder").addEventListener('drop', function (e) {
             });
         });
     }
-}, true);
+}, false);
 
 document.getElementById("aplouder").addEventListener('dragover', function (e) {
     e.preventDefault();
 }, true);
+
+// Highlight on drag
+document.getElementById("ap-droparea").addEventListener('dragenter', function (e) {
+    highlight(e);
+}, false);
+
+document.getElementById("ap-droparea").addEventListener('dragover', function (e) {
+    highlight(e);
+}, false);
+
+document.getElementById("ap-droparea").addEventListener('dragleave', function (e) {
+    unhighlight(e);
+}, false);
+
+document.getElementById("ap-droparea").addEventListener('drop', function (e) {
+    unhighlight(e);
+}, false);
 
 // using a file manager after button click
 document.querySelector('.inputfile').addEventListener('change', function (e) {
@@ -69,7 +86,7 @@ function scaleImage(url, width, height, callback){
 }
 
 function drawImage(content, details) {
-    document.getElementById('ap-filepreview').innerHTML +=
+    document.getElementById('ap-droparea').innerHTML +=
         '<div class="ap-preview">' +
         '  <div class="ap-image">' +
         '     <img>' +
@@ -85,11 +102,24 @@ function drawImage(content, details) {
         '    </div>' +
         '  </div>' +
         '</div>';
-    document.getElementById("ap-filepreview").querySelector("div.ap-preview:last-child div.ap-image img").setAttribute('src', content);
+    document.getElementById("ap-droparea").querySelector("div.ap-preview:last-child div.ap-image img").setAttribute('src', content);
 }
 
 function formatFileSize(bytes) {
     if (bytes < 1000) return bytes + " bytes";
     if (bytes >= 1000 && bytes <= 1000*1000) return Math.round(bytes / 1000) + " kB";
     return Math.round(bytes / 1000000 * 10) / 10 + " MB";
+}
+
+function preventDefaults(e) {
+    e.preventDefault();
+    e.stopPropagation();
+}
+
+function highlight(e) {
+    document.getElementById("ap-droparea").classList.add('highlight');
+}
+
+function unhighlight(e) {
+    document.getElementById("ap-droparea").classList.remove('highlight');
 }
