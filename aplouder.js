@@ -94,7 +94,7 @@ function scaleImage(url, width, height, callback){
 }
 
 function drawImage(content, details) {
-    dropArea.innerHTML +=
+    document.getElementById("gallery").innerHTML +=
         '<div class="ap-preview">' +
         '  <div class="ap-image">' +
         '     <img>' +

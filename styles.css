@@ -32,6 +32,10 @@
     fill: #cdd1d8;
 }
 
+#gallery {
+    margin-bottom: 15px;
+}
+
 #ap-droparea {
     border: #c0b7b7 dashed 2px;
     border-radius: 0;
