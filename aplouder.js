@@ -2,8 +2,8 @@ function Aplouder(options) {
     var self = this;
 
     this.processFiles = function (files, callback = null) {
-        for (let i = 0; i < files.length; i++) {
-            let src = files[i];
+        for (i = 0; i < files.length; i++) {
+            src = files[i];
             this.file2base64(src, function (file64) {
                 self.scaleImage(file64, 120, 120, function (scaledImg) {
                     self.drawImage(scaledImg, {name: src.name, size: src.size});
