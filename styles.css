@@ -20,7 +20,7 @@
     line-height: 1.5em;
 }
 
-.box-icon {
+.ap-box-icon {
     width: 100%;
     height: 80px;
     fill: #9a9da4;
@@ -28,15 +28,15 @@
     margin-bottom: 40px;
 }
 
-.box-icon:hover {
+.ap-box-icon:hover {
     fill: #cdd1d8;
 }
 
-.href {
+.ap-href {
     color: #9a9da4;
 }
 
-.href:hover {
+.ap-href:hover {
     color: #cdd1d8;
 }
 
