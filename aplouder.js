@@ -1,37 +1,13 @@
 var Filez = [];
 
-// using a file manager after button click
+// using file manager after button click
 document.querySelector('.inputfile').addEventListener('change', function (e) {
+    removeGallery();
     processFiles(this.files);
 }, false);
 
-// drag and drop files
+
 var dropArea = document.getElementById("ap-droparea");
-dropArea.addEventListener('drop', function (e) {
-    preventDefaults(e);
-    processFiles(e.dataTransfer.files);
-}, false);
-
-dropArea.addEventListener('dragover', function (e) {
-    e.preventDefault();
-}, true);
-
-// Highlight on drag
-dropArea.addEventListener('dragenter', function (e) {
-    highlight(e);
-}, false);
-
-dropArea.addEventListener('dragover', function (e) {
-    highlight(e);
-}, false);
-
-dropArea.addEventListener('dragleave', function (e) {
-    unhighlight(e);
-}, false);
-
-dropArea.addEventListener('drop', function (e) {
-    unhighlight(e);
-}, false);
 
 function clickSelectFilesButton() {
     document.getElementsByClassName("ap-message")[0].onclick = function () {
@@ -111,6 +87,11 @@ function drawImage(content, details) {
         '  </div>' +
         '</div>';
     dropArea.querySelector("div.ap-preview:last-child div.ap-image img").setAttribute('src', content);
+}
+
+function removeGallery() {
+    document.getElementById("gallery").innerHTML = "";
+    Filez = [];
 }
 
 function formatFileSize(bytes) {
