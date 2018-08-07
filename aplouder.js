@@ -4,10 +4,10 @@ function Aplouder(options) {
     this.processFiles = function (files, callback) {
         for (i = 0; i < files.length; i++) {
             src = files[i];
-            this.file2base64(src, function (file64) {
+            this.file2base64(src, function (original, file64) {
                 self.scaleImage(file64, 120, 120, function (scaledImg) {
-                    self.drawImage(scaledImg, {name: src.name, size: src.size});
-                    obj = {srcFile: src, base64: file64, thumb: scaledImg};
+                    self.drawImage(scaledImg, {name: original.name, size: original.size});
+                    obj = {srcFile: original, base64: file64, thumb: scaledImg};
                     self.Filez.push(obj);
                     if (callback != null) callback(obj);
                     self.initBrowseFilesButton();
@@ -19,7 +19,7 @@ function Aplouder(options) {
     this.file2base64 = function (file, callback) {
         var reader = new FileReader();
         reader.onload = function (e) {
-            callback(e.target.result);
+            callback(file, e.target.result);
         };
         reader.readAsDataURL(file);
     };
