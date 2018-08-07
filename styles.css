@@ -32,6 +32,14 @@
     fill: #cdd1d8;
 }
 
+.href {
+    color: #9a9da4;
+}
+
+.href:hover {
+    color: #cdd1d8;
+}
+
 #gallery {
     margin-bottom: 15px;
 }

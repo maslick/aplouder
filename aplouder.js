@@ -1,17 +1,15 @@
+var Filez = [];
+
+// using a file manager after button click
+document.querySelector('.inputfile').addEventListener('change', function (e) {
+    processFiles(this.files);
+}, false);
+
 // drag and drop files
 var dropArea = document.getElementById("ap-droparea");
-
 dropArea.addEventListener('drop', function (e) {
     preventDefaults(e);
-    var files = e.dataTransfer.files;
-    for (let i = 0; i < files.length; i++) {
-        processFile(files[i], function (file, info) {
-            scaleImage(file, 120, 120, function (canvas) {
-                drawImage(canvas.toDataURL("image/jpeg"), info);
-                makeButtonClickable();
-            });
-        });
-    }
+    processFiles(e.dataTransfer.files);
 }, false);
 
 dropArea.addEventListener('dragover', function (e) {
@@ -35,28 +33,15 @@ dropArea.addEventListener('drop', function (e) {
     unhighlight(e);
 }, false);
 
-// using a file manager after button click
-document.querySelector('.inputfile').addEventListener('change', function (e) {
-    var files = this.files;
-    for (let i = 0; i < files.length; i++) {
-        processFile(files[i], function (fi, fiInfo) {
-            scaleImage(fi, 120, 120, function (canvas) {
-                drawImage(canvas.toDataURL("image/jpeg"), fiInfo);
-                makeButtonClickable();
-            });
-        });
-    }
-}, false);
-
-function makeButtonClickable() {
+function clickSelectFilesButton() {
     document.getElementsByClassName("ap-message")[0].onclick = function () {
         document.getElementById("images").click();
     };
 }
 
-makeButtonClickable();
+clickSelectFilesButton();
 
-function processFile(file, callback) {
+function file2base64(file, callback) {
     var reader = new FileReader();
     reader.onload = function (e) {
         callback(e.target.result, { name: file.name, size: file.size });
@@ -130,4 +115,21 @@ function highlight(e) {
 
 function unhighlight(e) {
     dropArea.classList.remove('highlight');
+}
+
+function processFiles(files) {
+    for (let i = 0; i < files.length; i++) {
+        file2base64(files[i], function (file, info) {
+            scaleImage(file, 120, 120, function (canvas) {
+                var thumb = canvas.toDataURL("image/png");
+                drawImage(thumb, info);
+                Filez.push({
+                    srcFile: files[i],
+                    base64: file,
+                    thumb: thumb
+                });
+                clickSelectFilesButton();
+            });
+        });
+    }
 }
