@@ -1,7 +1,7 @@
 function Aplouder(options) {
     var self = this;
 
-    this.processFiles = function (files, callback = null) {
+    this.processFiles = function (files, callback) {
         for (i = 0; i < files.length; i++) {
             src = files[i];
             this.file2base64(src, function (file64) {
@@ -9,7 +9,7 @@ function Aplouder(options) {
                     self.drawImage(scaledImg, {name: src.name, size: src.size});
                     obj = {srcFile: src, base64: file64, thumb: scaledImg};
                     self.Filez.push(obj);
-                    if (callback) callback(obj);
+                    if (callback != null) callback(obj);
                     self.initBrowseFilesButton();
                 });
             });
