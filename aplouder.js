@@ -41,13 +41,15 @@ function clickSelectFilesButton() {
 
 clickSelectFilesButton();
 
-function processFiles(files) {
+function processFiles(files, callback = null) {
     for (let i = 0; i < files.length; i++) {
         let src = files[i];
         file2base64(src, function (file64) {
             scaleImage(file64, 120, 120, function (scaledImg) {
                 drawImage(scaledImg, {name: src.name, size: src.size});
-                Filez.push({srcFile: src, base64: file64, thumb: scaledImg});
+                obj = {srcFile: src, base64: file64, thumb: scaledImg};
+                Filez.push(obj);
+                if (callback) callback(obj);
                 clickSelectFilesButton();
             });
         });
