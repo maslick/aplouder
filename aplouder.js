@@ -1,28 +1,6 @@
 function Aplouder(options) {
     var self = this;
 
-    this.getDropAreaEl = function () {
-        return document.getElementById("ap-droparea");
-    };
-
-    this.getGalleryEl = function () {
-        return document.getElementById("ap-gallery");
-    };
-
-    this.getMessageEl = function () {
-        return document.getElementById("ap-message");
-    };
-
-    this.getInputFileEl = function () {
-        return document.querySelector('.inputfile');
-    };
-
-    this.initBrowseFilesButton = function () {
-        this.getMessageEl().onclick = function () {
-            document.getElementById("images").click();
-        };
-    };
-
     this.processFiles = function (files, callback = null) {
         for (let i = 0; i < files.length; i++) {
             let src = files[i];
@@ -50,7 +28,7 @@ function Aplouder(options) {
         var img = new Image();
         img.crossOrigin = "anonymous";
 
-        // When the image is loaded, resize it in canvas.
+        // When the image is loaded, resize it in canvas
         img.onload = function () {
             var canvas = document.createElement("canvas"),
                 ctx = canvas.getContext("2d");
@@ -109,6 +87,29 @@ function Aplouder(options) {
     this.preventDefaults = function (e) {
         e.preventDefault();
         e.stopPropagation();
+    };
+
+    // HTML elements' getters
+    this.getDropAreaEl = function () {
+        return document.getElementById("ap-droparea");
+    };
+
+    this.getGalleryEl = function () {
+        return document.getElementById("ap-gallery");
+    };
+
+    this.getMessageEl = function () {
+        return document.getElementById("ap-message");
+    };
+
+    this.getInputFileEl = function () {
+        return document.querySelector('.inputfile');
+    };
+
+    this.initBrowseFilesButton = function () {
+        this.getMessageEl().onclick = function () {
+            document.getElementById(options.inputId || "ap-file-input").click();
+        };
     };
 }
 
