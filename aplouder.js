@@ -62,10 +62,10 @@ function Aplouder(options) {
             '  <div class="ap-overlay">' +
             '    <div class="ap-details">' +
             '       <div class="ap-size">' +
-            self.formatFileSize(details.size) +
+                        self.formatFileSize(details.size) +
             '       </div>' +
             '       <div class="ap-name">' +
-            details.name +
+                        details.name +
             '       </div>' +
             '    </div>' +
             '  </div>' +
