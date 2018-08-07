@@ -41,10 +41,23 @@ function clickSelectFilesButton() {
 
 clickSelectFilesButton();
 
+function processFiles(files) {
+    for (let i = 0; i < files.length; i++) {
+        let src = files[i];
+        file2base64(src, function (file64) {
+            scaleImage(file64, 120, 120, function (scaledImg) {
+                drawImage(scaledImg, {name: src.name, size: src.size});
+                Filez.push({srcFile: src, base64: file64, thumb: scaledImg});
+                clickSelectFilesButton();
+            });
+        });
+    }
+}
+
 function file2base64(file, callback) {
     var reader = new FileReader();
     reader.onload = function (e) {
-        callback(e.target.result, { name: file.name, size: file.size });
+        callback(e.target.result);
     };
     reader.readAsDataURL(file);
 }
@@ -53,7 +66,7 @@ function scaleImage(url, width, height, callback){
     var img = new Image();
     img.crossOrigin = "anonymous";
 
-    // When the images is loaded, resize it in canvas.
+    // When the image is loaded, resize it in canvas.
     img.onload = function() {
         var canvas = document.createElement("canvas"),
             ctx = canvas.getContext("2d");
@@ -72,7 +85,7 @@ function scaleImage(url, width, height, callback){
                 ctx.drawImage(this, 0, (img.height - minVal) / 2, minVal, minVal, 0, 0, width, height);
         }
 
-        callback(canvas);
+        callback(canvas.toDataURL("image/png"));
     };
 
     img.src = url;
@@ -115,21 +128,4 @@ function highlight(e) {
 
 function unhighlight(e) {
     dropArea.classList.remove('highlight');
-}
-
-function processFiles(files) {
-    for (let i = 0; i < files.length; i++) {
-        file2base64(files[i], function (file, info) {
-            scaleImage(file, 120, 120, function (canvas) {
-                var thumb = canvas.toDataURL("image/png");
-                drawImage(thumb, info);
-                Filez.push({
-                    srcFile: files[i],
-                    base64: file,
-                    thumb: thumb
-                });
-                clickSelectFilesButton();
-            });
-        });
-    }
 }
