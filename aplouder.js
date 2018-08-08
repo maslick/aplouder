@@ -92,7 +92,7 @@ function Aplouder(options) {
     };
 
     this.formatFileSize = function (bytes) {
-        if (bytes < 1000) return bytes + " bytes";
+        if (bytes < 1000) return "< 1kB";
         if (bytes >= 1000 && bytes <= 1000 * 1000) return Math.round(bytes / 1000) + "kB";
         return Math.round(bytes / 1000000 * 10) / 10 + "Mb";
     };
@@ -139,6 +139,3 @@ Aplouder.prototype.init = function () {
         self.processFiles(this.files, self.callback);
     }, false);
 };
-
-
-
