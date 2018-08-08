@@ -169,7 +169,6 @@ Aplouder.openModal = function () {
 
 
 Aplouder.currentSlide = function (n) {
-    console.log(n);
     var slides = document.getElementsByClassName("ap-slides");
     for (i = 0; i < slides.length; i++)
         slides[i].style.display = "none";
