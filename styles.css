@@ -131,7 +131,7 @@
     width: 100%;
     height: 100%;
     overflow: hidden;
-    padding-top: 150px;
+    padding-top: 200px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -143,10 +143,17 @@
 }
 
 .ap-modal-content .ap-slides img {
+    width: auto;
     height: 500px;
 }
 
+.ap-slides .ap-slide-name {
+    font-size: 1.3em;
+    padding: 15px 0 0 5px;
+    font-family: monospace;
+}
 
-.ap-modal body {
-    overflow: hidden;
+.ap-slides .ap-slide-size {
+    font-size: 1.6em;
+    font-family: monospace;
 }

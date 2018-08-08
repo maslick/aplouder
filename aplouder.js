@@ -10,7 +10,7 @@ function Aplouder(options) {
                 self.scaleImage(file64, 120, 120, function (scaledImg) {
                     obj = { srcFile: original, base64: file64, thumb: scaledImg, i: self.number++ };
                     self.drawImage(obj);
-                    self.haha(obj);
+                    self.addSlide(obj);
                     self.Filez.push(obj);
 
                     if (callback != null) callback(obj);
@@ -121,11 +121,17 @@ function Aplouder(options) {
         };
     };
 
-    this.haha = function (f) {
+    this.addSlide = function (f) {
         if (f.base64 == null) f.base64 = self.unknown;
         document.getElementsByClassName("ap-modal-content")[0].innerHTML +=
             '<div class="ap-slides">' +
-            '<img src="' + f.base64 + '">' +
+            '  <img src="' + f.base64 + '">' +
+            '  <div class="ap-slide-name">' +
+                 f.srcFile.name +
+            '  </div>' +
+            '  <div class="ap-slide-size">' +
+                 self.formatFileSize(f.srcFile.size) +
+            '  </div>' +
             '</div>';
     };
 }
