@@ -85,6 +85,7 @@ function Aplouder(options) {
         document.getElementById("ap-gallery").innerHTML = "";
         document.getElementsByClassName("ap-modal-content")[0].innerHTML = "";
         Filez = [];
+        self.number = 0;
     };
 
     this.formatFileSize = function (bytes) {
@@ -168,6 +169,7 @@ Aplouder.openModal = function () {
 
 
 Aplouder.currentSlide = function (n) {
+    console.log(n);
     var slides = document.getElementsByClassName("ap-slides");
     for (i = 0; i < slides.length; i++)
         slides[i].style.display = "none";
