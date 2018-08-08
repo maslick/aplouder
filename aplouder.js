@@ -1,5 +1,6 @@
 function Aplouder(options) {
     var self = this;
+    this.callback = options.callback || null;
 
     this.processFiles = function (files, callback) {
         for (i = 0; i < files.length; i++) {
@@ -135,7 +136,7 @@ Aplouder.prototype.init = function () {
     // using file manager after button click
     this.getInputFileEl().addEventListener('change', function (e) {
         self.removeGallery();
-        self.processFiles(this.files);
+        self.processFiles(this.files, self.callback);
     }, false);
 };
 

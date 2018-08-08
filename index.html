@@ -41,6 +41,9 @@
 
 <script src="aplouder.js"></script>
 <script>
-    var aplouder = new Aplouder({inputId: "imagez"});
+    var aplouder = new Aplouder({
+        inputId: "imagez",
+        callback: function(f) { console.log(f.srcFile.name); }
+    });
     aplouder.init();
 </script>
