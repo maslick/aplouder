@@ -68,7 +68,7 @@
 }
 
 .ap-image {
-    border-radius: 5px;
+    border-radius: 13px;
     overflow: hidden;
     width: 120px;
     height: 120px;
@@ -86,7 +86,7 @@
     opacity: 0;
     transition: .3s ease;
     background-color: #9eb6ba;
-    border-radius: 5px;
+    border-radius: 13px;
     cursor: default;
 }
 
