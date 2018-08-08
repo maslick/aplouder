@@ -1,26 +1,21 @@
 function Aplouder(options) {
     var self = this;
     this.callback = options.callback || null;
+    this.number = 0;
 
     this.processFiles = function (files, callback) {
         for (i = 0; i < files.length; i++) {
             src = files[i];
             this.file2base64(src, function (original, file64) {
-                if (file64 == null) {
-                    self.drawImage(self.unknown, {name: original.name, size: original.size, type: original.type});
-                    obj = {srcFile: original, base64: null, thumb: self.unknown};
+                self.scaleImage(file64, 120, 120, function (scaledImg) {
+                    obj = { srcFile: original, base64: file64, thumb: scaledImg, i: self.number++ };
+                    self.drawImage(obj);
+                    self.haha(obj);
                     self.Filez.push(obj);
+
                     if (callback != null) callback(obj);
                     self.initBrowseFilesButton();
-                }
-                else
-                    self.scaleImage(file64, 120, 120, function (scaledImg) {
-                        self.drawImage(scaledImg, {name: original.name, size: original.size, type: original.type});
-                        obj = {srcFile: original, base64: file64, thumb: scaledImg};
-                        self.Filez.push(obj);
-                        if (callback != null) callback(obj);
-                        self.initBrowseFilesButton();
-                    });
+                });
             });
         }
     };
@@ -66,28 +61,29 @@ function Aplouder(options) {
         img.src = url;
     };
 
-    this.drawImage = function (content, details) {
+    this.drawImage = function (json) {
+        var onclick = 'Aplouder.openModal(); Aplouder.currentSlide(' + json.i + ');';
         self.getGalleryEl().innerHTML +=
             '<div class="ap-preview">' +
             '  <div class="ap-image">' +
-            '     <img>' +
+            '     <img src="' + json.thumb + '">' +
             '  </div>' +
-            '  <div class="ap-overlay">' +
+            '  <div class="ap-overlay" onclick="' + onclick + '">' +
             '    <div class="ap-details">' +
             '       <div class="ap-size">' +
-                        self.formatFileSize(details.size) +
+                        self.formatFileSize(json.srcFile.size) +
             '       </div>' +
             '       <div class="ap-name">' +
-                        details.name +
+                        json.srcFile.name +
             '       </div>' +
             '    </div>' +
             '  </div>' +
             '</div>';
-        this.getDropAreaEl().querySelector("div.ap-preview:last-child div.ap-image img").setAttribute('src', content);
     };
 
     this.removeGallery = function () {
         document.getElementById("ap-gallery").innerHTML = "";
+        document.getElementsByClassName("ap-modal-content")[0].innerHTML = "";
         Filez = [];
     };
 
@@ -124,6 +120,14 @@ function Aplouder(options) {
             document.getElementById(options.inputId || "ap-file-input").click();
         };
     };
+
+    this.haha = function (f) {
+        if (f.base64 == null) f.base64 = self.unknown;
+        document.getElementsByClassName("ap-modal-content")[0].innerHTML +=
+            '<div class="ap-slides">' +
+            '<img src="' + f.base64 + '">' +
+            '</div>';
+    };
 }
 
 
@@ -138,4 +142,28 @@ Aplouder.prototype.init = function () {
         self.removeGallery();
         self.processFiles(this.files, self.callback);
     }, false);
+};
+
+
+// static methods
+Aplouder.hideModal = function () {
+    document.getElementById("ap-modal").style.display = "none";
+    var slides = document.getElementsByClassName("ap-slides");
+    for (i = 0; i < slides.length; i++)
+        slides[i].style.display = "none";
+    document.getElementsByTagName("body")[0].style.overflow = "auto";
+};
+
+
+Aplouder.openModal = function () {
+    document.getElementById("ap-modal").style.display = "block";
+    document.getElementsByTagName("body")[0].style.overflow = "hidden";
+};
+
+
+Aplouder.currentSlide = function (n) {
+    var slides = document.getElementsByClassName("ap-slides");
+    for (i = 0; i < slides.length; i++)
+        slides[i].style.display = "none";
+    slides[n].style.display = "block";
 };
