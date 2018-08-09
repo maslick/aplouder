@@ -8,7 +8,7 @@ function Aplouder(options) {
             src = files[i];
             this.file2base64(src, function (original, file64) {
                 self.scaleImage(file64, 120, 120, function (scaledImg) {
-                    obj = { srcFile: original, base64: file64, thumb: scaledImg, i: self.number++ };
+                    obj = { src: original, base64: file64, thumb64: scaledImg, i: self.number++ };
                     self.drawImage(obj);
                     self.addSlide(obj);
                     self.Filez.push(obj);
@@ -66,15 +66,15 @@ function Aplouder(options) {
         self.getGalleryEl().innerHTML +=
             '<div class="ap-preview">' +
             '  <div class="ap-image">' +
-            '     <img src="' + json.thumb + '">' +
+            '     <img src="' + json.thumb64 + '">' +
             '  </div>' +
             '  <div class="ap-overlay" onclick="' + onclick + '">' +
             '    <div class="ap-details">' +
             '       <div class="ap-size">' +
-                        self.formatFileSize(json.srcFile.size) +
+                        self.formatFileSize(json.src.size) +
             '       </div>' +
             '       <div class="ap-name">' +
-                        json.srcFile.name +
+                        json.src.name +
             '       </div>' +
             '    </div>' +
             '  </div>' +
@@ -128,10 +128,10 @@ function Aplouder(options) {
             '<div class="ap-slides">' +
             '  <img src="' + f.base64 + '">' +
             '  <div class="ap-slide-name">' +
-                 f.srcFile.name +
+                 f.src.name +
             '  </div>' +
             '  <div class="ap-slide-size">' +
-                 self.formatFileSize(f.srcFile.size) +
+                 self.formatFileSize(f.src.size) +
             '  </div>' +
             '</div>';
     };
