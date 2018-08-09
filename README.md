@@ -28,4 +28,9 @@ custom multifile uploader
 ```
 ## Example
 http://aplouder.herokuapp.com
+
 ![alt tag](screenshot2.png?raw=true "apLouder")
+
+is identical to:
+
+![alt tag](screenshot3.png?raw=true "standard input element")
