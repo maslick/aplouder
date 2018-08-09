@@ -1,8 +1,9 @@
 # =apLouder=
 custom multifile uploader
-![alt tag](screenshot1.png?raw=true "apLouder")
 
 ## Features
+![alt tag](screenshot1.png?raw=true "apLouder")
+
  * inhances the standard HTML **input type="file"** element
  * creates an image gallery with thumbnails from the files you want to include in your form
  * shows size/filname on mouse hover
