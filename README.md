@@ -7,8 +7,9 @@ custom multifile uploader
  * shows size/filname on mouse hover
  * an on-click image preview (use left/right/esc keys to navigate through the gallery)
  * support for non-image files
+
 ![alt tag](screenshot1.png?raw=true "apLouder")
- 
+
 ## Installation
 ```
 <link rel="stylesheet" href="aplouder.css">
