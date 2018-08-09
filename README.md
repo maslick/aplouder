@@ -1,5 +1,6 @@
 # =apLouder=
 custom multifile uploader
+![alt tag](screenshot1.png?raw=true "apLouder")
 
 ## Features
  * inhances the standard HTML **input type="file"** element
