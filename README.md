@@ -15,11 +15,11 @@ custom multifile uploader
 ```
  
 ## Usage
-1. Define an input file tag:
+1. Define your input file tag:
 ```
 <input type="file" id="file-input-element" multiple>
 ```
-2. Initialize Aploader
+2. Initialize **ApLouder**
 ```
 <script>
     var aplouder = new Aplouder({ inputId: "file-input-element" });
