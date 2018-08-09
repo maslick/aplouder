@@ -7,6 +7,7 @@ function Aplouder(options) {
         for (i = 0; i < files.length; i++) {
             src = files[i];
             this.file2base64(src, function (original, file64) {
+                if (file64 == null) file64 = self.unknown;
                 self.scaleImage(file64, 120, 120, function (scaledImg) {
                     obj = { src: original, base64: file64, thumb64: scaledImg, i: self.number++ };
                     self.drawImage(obj);
