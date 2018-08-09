@@ -5,6 +5,7 @@
     <title>ApLouder</title>
     <link rel="stylesheet" href="styles.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="aplouder.js"></script>
 </head>
 
 <style>
@@ -21,13 +22,12 @@
 
 <body>
     <div class="mybox">
-        <input type="file" id="imagez" multiple>
+        <input type="file" id="file-input-element" multiple>
     </div>
 </body>
 </html>
 
-<script src="aplouder.js"></script>
 <script>
-    var aplouder = new Aplouder({ inputId: "imagez" });
+    var aplouder = new Aplouder({ inputId: "file-input-element" });
     aplouder.init();
 </script>
