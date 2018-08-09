@@ -11,7 +11,7 @@ function Aplouder(options) {
                     obj = { src: original, base64: file64, thumb64: scaledImg, i: self.number++ };
                     self.drawImage(obj);
                     self.addSlide(obj);
-                    self.Filez.push(obj);
+                    Aplouder.Filez.push(obj);
 
                     if (callback != null) callback(obj);
                     self.initBrowseFilesButton();
@@ -140,7 +140,6 @@ function Aplouder(options) {
 
 Aplouder.prototype.init = function () {
     var self = this;
-    this.Filez = [];
     this.initBrowseFilesButton();
     this.unknown = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAB4CAMAAAAOusbgAAABTVBMVEUAAAAAqv8AnOMAlOQAl+gAm+kAleoAmesAmOkAmukAmOkAmecAmucAmOcAmOgAmugAmegAmegAmOgAmegAmugAmekAmOkAmecAmucAmegAmegAmOgAmekAmukAmecAmegAmegAmegAmegAmegAmegAmegAmegAmegAmegAmegAmegAmegBmegCmugDmugEm+gFm+gHnOkInOkJnekOn+kao+ocpOsjp+skp+slqOsmqOsnqewoqewpqewtqusvq+syrOwzrew0rew1ruw2ruw3ruxDs+1EtO1Mt+5Rue5Xu++GzfKO0fOP0fOQ0fOR0vOS0vOT0/OU0/SV0/Sd1/Sk2fWl2vWm2vWn2/Wo2/Wp2/Wq3Pav3vay3/a44fe/5PfE5vjg8fnh8fri8vrj8vrk8vrn9Prr9frs9vvt9vvy+Pvz+Pv3+vz5+/z8/PzbC5gtAAAAK3RSTlMAAxITFhcYGVxdXl9gYWNljo+QkZKUlZaXmJmpqqvOz9DR6Onq6/Lz9Pr+b1G0hwAAAm1JREFUeAHt21dzUkEYh/GXE0VFgxpLoqACFiR7YjEWgxp7770XURNL3O9/6Y5ynIOvnuGZkd1c7HP7n53fLLeclayxtfVmy4y0VrNWSWSwVds6xkudqXLeXb/feKtdlazSZuO1iVIf9uw6uf87G+9VxbVin3+4XXbwdhOgSZGxTgi4k8g6E6SK7AgD16UZBt4le8PAu2U6DDwtJlDLHI5whCMc4QhHOMIRvjJfOM9dGxF89dvi+SK39/0GgIlr7ecL/5y7PWuBLMgtkLsfrCWyMNfJF/86n3IukgW4SlYukAW6ri+X1Hz6o7VQFuAqWblAFu46+fLAfOaTtVgW5mZyNzcfX/hzXrpOYODaRzMm1021uztjGLhABjBwqaxg4AIZwMAFMoCBy2X5Ty6WhbtchjB0oSzc5TKCuctk4S6XAcxdKgt3uTwEzF0uF8Cv1Nmls2bY5r6q02/TIeHDr9XZxXPDuj119t1RUwAzmbsaxjJ3AQxl7joYytwFMJa562AmY5fCXD4JXAUDWbnvketgLAMXwEAGLoCBDFwFc5m7Gubywjx3OWxm32j5RG4/BlwFwzu/PJSb04fAVTCSX+RdJz/groOhrF0n38eug7H8/KCa03vUdTCVnyk3k4nrYCRrN5PvMtfBTH6q3Ey+g1wHI/mJdn/Lt4GLYCc/PlAwp7eAi2BzZKZwTmeD/icR4QhHOMIRjnCEIxzhCIf76HdPGLgljTDwTqmHgetSCQOvliTUcwWZDAFvCfkkRar+4XH52Sbf7gb5VWnCr7uxJFnVtj+2PS65ylO+HtNtXSmDJZVaY9TPBxu1NUnm/QAjXOs62QO4CAAAAABJRU5ErkJggg==";
 
@@ -150,8 +149,24 @@ Aplouder.prototype.init = function () {
         self.processFiles(this.files, self.callback);
     }, false);
 
-    // key binding
-    window.addEventListener("keydown", function (event) { if (event.keyCode === 27) Aplouder.hideModal(); }, false);
+    // key binding (esc, left, right)
+    window.addEventListener("keydown", function (e) {
+        if (e.keyCode === 27) Aplouder.hideModal();
+        if (e.keyCode === 37) {
+            if (Aplouder.slideNumber !== -1) {
+                prevSlide = Aplouder.slideNumber - 1;
+                if (prevSlide !== -1) Aplouder.currentSlide(prevSlide);
+                else Aplouder.currentSlide(Object.keys(Aplouder.Filez).length - 1);
+            }
+        }
+        if (e.keyCode === 39) {
+            if (Aplouder.slideNumber !== -1) {
+                nextSlide = Aplouder.slideNumber + 1;
+                if (nextSlide !== Object.keys(Aplouder.Filez).length) Aplouder.currentSlide(nextSlide);
+                else Aplouder.currentSlide(0);
+            }
+        }
+    }, false);
 };
 
 
@@ -159,9 +174,9 @@ Aplouder.prototype.init = function () {
 Aplouder.hideModal = function () {
     document.getElementById("ap-modal").style.display = "none";
     var slides = document.getElementsByClassName("ap-slides");
-    for (i = 0; i < slides.length; i++)
-        slides[i].style.display = "none";
+    for (i = 0; i < slides.length; i++) slides[i].style.display = "none";
     document.getElementsByTagName("body")[0].style.overflow = "auto";
+    Aplouder.slideNumber = -1;
 };
 
 
@@ -173,7 +188,10 @@ Aplouder.openModal = function () {
 
 Aplouder.currentSlide = function (n) {
     var slides = document.getElementsByClassName("ap-slides");
-    for (i = 0; i < slides.length; i++)
-        slides[i].style.display = "none";
+    for (i = 0; i < slides.length; i++) slides[i].style.display = "none";
     slides[n].style.display = "block";
+    Aplouder.slideNumber = n;
 };
+
+Aplouder.Filez = [];
+Aplouder.slideNumber = -1;
