@@ -28,11 +28,12 @@ custom multifile uploader
     aplouder.init();
 </script>
 ```
-## Live demo
-http://aplouder.herokuapp.com
 
 ![alt tag](screenshot2.png?raw=true "apLouder")
 
 is identical to:
 
 ![alt tag](screenshot3.png?raw=true "standard input element")
+
+## Live demo
+http://aplouder.herokuapp.com
