@@ -11,6 +11,7 @@ custom multifile uploader
  
 ## Installation
 ```
+<link rel="stylesheet" href="aplouder.css">
 <script src="aplouder.js"></script>
 ```
  
