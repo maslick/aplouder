@@ -26,7 +26,7 @@ custom multifile uploader
     aplouder.init();
 </script>
 ```
-## Example
+## Live demo
 http://aplouder.herokuapp.com
 
 ![alt tag](screenshot2.png?raw=true "apLouder")
