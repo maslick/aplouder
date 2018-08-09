@@ -1,0 +1,26 @@
+# =apLouder=
+custom multifile uploader
+
+## Features
+ * inhances the standard HTML **input type="file"** element
+ * creates an image gallery with thumbnails from the files you want to put into a form
+ * shows size/filname on mouse hover
+ * image preview on click (use left/right/esc keys to navigate through the gallery)
+ * support for non-image files
+ 
+ 
+## Installation
+<script src="aplouder.js"></script>
+ 
+## Usage
+1. Define an input file tag:
+```
+<input type="file" id="file-input-element" multiple>
+```
+2. Initialize Aploader
+```
+<script>
+    var aplouder = new Aplouder({ inputId: "file-input-element" });
+    aplouder.init();
+</script>
+```
