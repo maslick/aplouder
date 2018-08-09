@@ -153,14 +153,14 @@ Aplouder.prototype.init = function () {
     window.addEventListener("keydown", function (e) {
         if (e.keyCode === 27) Aplouder.hideModal();
         if (e.keyCode === 37) {
-            if (Aplouder.slideNumber !== -1) {
+            if (Aplouder.slideNumber !== null) {
                 prevSlide = Aplouder.slideNumber - 1;
                 if (prevSlide !== -1) Aplouder.currentSlide(prevSlide);
                 else Aplouder.currentSlide(Object.keys(Aplouder.Filez).length - 1);
             }
         }
         if (e.keyCode === 39) {
-            if (Aplouder.slideNumber !== -1) {
+            if (Aplouder.slideNumber !== null) {
                 nextSlide = Aplouder.slideNumber + 1;
                 if (nextSlide !== Object.keys(Aplouder.Filez).length) Aplouder.currentSlide(nextSlide);
                 else Aplouder.currentSlide(0);
@@ -176,7 +176,7 @@ Aplouder.hideModal = function () {
     var slides = document.getElementsByClassName("ap-slides");
     for (i = 0; i < slides.length; i++) slides[i].style.display = "none";
     document.getElementsByTagName("body")[0].style.overflow = "auto";
-    Aplouder.slideNumber = -1;
+    Aplouder.slideNumber = null;
 };
 
 
@@ -194,4 +194,4 @@ Aplouder.currentSlide = function (n) {
 };
 
 Aplouder.Filez = [];
-Aplouder.slideNumber = -1;
+Aplouder.slideNumber = null;
