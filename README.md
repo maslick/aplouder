@@ -10,7 +10,9 @@ custom multifile uploader
  
  
 ## Installation
+```
 <script src="aplouder.js"></script>
+```
  
 ## Usage
 1. Define an input file tag:
