@@ -137,7 +137,9 @@
 
 .ap-modal-content .ap-slides img {
     width: auto;
-    height: 500px;
+    height: auto;
+    max-height: 500px;
+    max-width: 80%;
 }
 
 .ap-slides .ap-slide-name {
