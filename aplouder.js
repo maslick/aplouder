@@ -149,6 +149,9 @@ Aplouder.prototype.init = function () {
         self.removeGallery();
         self.processFiles(this.files, self.callback);
     }, false);
+
+    // key binding
+    window.addEventListener("keydown", function (event) { if (event.keyCode === 27) Aplouder.hideModal(); }, false);
 };
 
 
