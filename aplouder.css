@@ -158,3 +158,9 @@
         max-height: 200px;
     }
 }
+
+@media only screen and (max-height: 300px) {
+    .ap-modal-content .ap-slides img {
+        max-height: 200px;
+    }
+}
