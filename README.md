@@ -4,8 +4,8 @@ custom multifile uploader
 ## Features
  * inhances the standard HTML **input type="file"** element
  * creates an image gallery with thumbnails from the files you want to include in your form
- * shows size/filname on mouse hover
- * an on-click image preview (use left/right/esc keys to navigate through the gallery)
+ * shows size/filename on mouse hover
+ * on-click image preview (use left/right/esc keys to navigate through the gallery)
  * support for non-image files
 
 ![alt tag](screenshot1.png?raw=true "apLouder")
