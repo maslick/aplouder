@@ -194,13 +194,6 @@ Aplouder.prototype.init = function () {
         if (e.keyCode === 37) handlePrev();
         if (e.keyCode === 39) handleNext();
     }, false);
-
-    // swipe detection
-    swipedetect(document.getElementById("ap-modal"), function (direction) {
-        if (direction === "right") handlePrev();
-        else if (direction === "left") handleNext();
-        else Aplouder.hideModal();
-    });
 };
 
 
