@@ -1,11 +1,11 @@
 # =apLouder=
-custom multifile uploader
+enhanced multi-file uploader
 
 ## Features
- * inhances the standard HTML **input type="file"** element
+ * enhances the standard HTML **input type="file"** element
  * creates an image gallery with thumbnails from the files you want to include in your form
- * shows size/filname on mouse hover
- * an on-click image preview (use left/right/esc keys to navigate through the gallery)
+ * shows size/filename on mouse hover
+ * on-click image preview (use left/right/esc keys to navigate through the gallery)
  * support for non-image files
 
 ![alt tag](screenshot1.png?raw=true "apLouder")
@@ -17,7 +17,7 @@ custom multifile uploader
 ```
  
 ## Usage
-1. Define your input file tag:
+1. Define your input file element:
 ```
 <input type="file" id="file-input-element" multiple>
 ```
