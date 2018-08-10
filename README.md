@@ -1,8 +1,8 @@
 # =apLouder=
-custom multi-file uploader
+enhanced multi-file uploader
 
 ## Features
- * inhances the standard HTML **input type="file"** element
+ * enhances the standard HTML **input type="file"** element
  * creates an image gallery with thumbnails from the files you want to include in your form
  * shows size/filename on mouse hover
  * on-click image preview (use left/right/esc keys to navigate through the gallery)
