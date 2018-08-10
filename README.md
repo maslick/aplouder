@@ -1,5 +1,5 @@
 # =apLouder=
-custom multifile uploader
+custom multi-file uploader
 
 ## Features
  * inhances the standard HTML **input type="file"** element
