@@ -17,7 +17,7 @@ custom multifile uploader
 ```
  
 ## Usage
-1. Define your input file tag:
+1. Define your input file element:
 ```
 <input type="file" id="file-input-element" multiple>
 ```
