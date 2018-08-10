@@ -1,7 +1,8 @@
 function Aplouder(options) {
     var self = this;
     this.callback = options.callback || null;
-    this.inputFileEl = document.getElementById(options.inputId || "ap-file-input");
+    this.inputFileElStr = options.inputId || "ap-file-input";
+    this.inputFileEl = document.getElementById(this.inputFileElStr);
     this.number = 0;
 
     this.processFiles = function (files, callback) {
@@ -172,23 +173,34 @@ Aplouder.prototype.init = function () {
     }, false);
 
     // key binding (esc, left, right)
+    function handlePrev() {
+        if (Aplouder.slideNumber !== null) {
+            prevSlide = Aplouder.slideNumber - 1;
+            if (prevSlide !== -1) Aplouder.currentSlide(prevSlide);
+            else Aplouder.currentSlide(Object.keys(Aplouder.Filez).length - 1);
+        }
+    }
+
+    function handleNext() {
+        if (Aplouder.slideNumber !== null) {
+            nextSlide = Aplouder.slideNumber + 1;
+            if (nextSlide !== Object.keys(Aplouder.Filez).length) Aplouder.currentSlide(nextSlide);
+            else Aplouder.currentSlide(0);
+        }
+    }
+
     window.addEventListener("keydown", function (e) {
         if (e.keyCode === 27) Aplouder.hideModal();
-        if (e.keyCode === 37) {
-            if (Aplouder.slideNumber !== null) {
-                prevSlide = Aplouder.slideNumber - 1;
-                if (prevSlide !== -1) Aplouder.currentSlide(prevSlide);
-                else Aplouder.currentSlide(Object.keys(Aplouder.Filez).length - 1);
-            }
-        }
-        if (e.keyCode === 39) {
-            if (Aplouder.slideNumber !== null) {
-                nextSlide = Aplouder.slideNumber + 1;
-                if (nextSlide !== Object.keys(Aplouder.Filez).length) Aplouder.currentSlide(nextSlide);
-                else Aplouder.currentSlide(0);
-            }
-        }
+        if (e.keyCode === 37) handlePrev();
+        if (e.keyCode === 39) handleNext();
     }, false);
+
+    // swipe detection
+    swipedetect(document.getElementById("ap-modal"), function (direction) {
+        if (direction === "right") handlePrev();
+        else if (direction === "left") handleNext();
+        else Aplouder.hideModal();
+    });
 };
 
 
