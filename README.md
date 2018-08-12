@@ -3,7 +3,7 @@ enhanced multi-file uploader
 
 ## Features
  * enhances the standard HTML **input type="file"** element
- * creates an image gallery with thumbnails from the files you want to include in your form
+ * creates an image gallery with thumbnails
  * shows size/filename on mouse hover
  * on-click image preview (use left/right/esc keys to navigate through the gallery)
  * support for non-image files
