@@ -73,9 +73,8 @@ class Aplouder {
         for (let i = 0; i < files.length; i++) {
             let src = files[i];
             Aplouder.file2base64(src, function (original, file64) {
-                if (file64 == null) file64 = self.unknown;
-                Aplouder.scaleImage(file64, 120, 120, function (scaledImg) {
-                    const obj = { src: original, base64: file64, thumb64: scaledImg, i: self.numberOfFiles++ };
+                Aplouder.scaleImage(file64 || self.unknown, 120, 120, function (scaledImg) {
+                    const obj = { src: original, base64: file64 || self.unknown, thumb64: scaledImg, i: self.numberOfFiles++ };
                     Aplouder.drawImage(self.id, obj);
                     Aplouder.addSlide(self.id, obj);
                     self.Filez.push(obj);
@@ -167,7 +166,6 @@ class Aplouder {
     }
 
     static addSlide(id, f) {
-        if (f.base64 == null) f.base64 = self.unknown;
         document.querySelector(`.${id}.ap-modal .ap-modal-content`).innerHTML +=
             '<div class="ap-slides">' +
             '   <img src="' + f.base64 + '">' +
@@ -178,7 +176,7 @@ class Aplouder {
                     Aplouder.formatFileSize(f.src.size) +
             '   </div>' +
             '</div>';
-    };
+    }
 
     static hideModal(id) {
         document.querySelector(`.${id}.ap-modal`).style.display = "none";
@@ -198,7 +196,7 @@ class Aplouder {
         for (let i = 0; i < slides.length; i++) slides[i].style.display = "none";
         slides[n].style.display = "block";
         Aplouder.aplouders.filter(it => it.id === id)[0].slideNumber = n;
-    };
+    }
 }
 
 Aplouder.aplouders = [];
