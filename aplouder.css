@@ -1,10 +1,4 @@
-#ap-droparea.highlight {
-    background-color: aliceblue;
-    outline: #c0b7b7 solid 1px;
-    border-style: solid;
-}
-
-#ap-message {
+.ap-message {
     text-align: center;
     font-family: monospace;
     font-size: 1.1em;
@@ -33,11 +27,11 @@
     color: #cdd1d8;
 }
 
-#ap-gallery {
+.ap-gallery {
     margin-bottom: 15px;
 }
 
-#ap-droparea {
+.ap-droparea {
     border: #c0b7b7 dashed 2px;
     border-radius: 0;
     margin: 0 auto;

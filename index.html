@@ -16,18 +16,24 @@
     }
 
     .mybox {
-        padding: 100px 0;
+        padding: 15px 0;
     }
 </style>
 
 <body>
     <div class="mybox">
-        <input type="file" id="file-input-element" multiple>
+        <input type="file" id="el-1" multiple>
+    </div>
+
+    <div class="mybox">
+        <input type="file" id="el-2" multiple>
     </div>
 </body>
 </html>
 
 <script>
-    var aplouder = new Aplouder({ inputId: "file-input-element" });
-    aplouder.init();
+    var aplouder1 = new Aplouder({ id: "el-1" });
+    var aplouder2 = new Aplouder({ id: "el-2" });
+    aplouder1.init();
+    aplouder2.init();
 </script>
