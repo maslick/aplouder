@@ -19,12 +19,12 @@ enhanced multi-file uploader
 ## Usage
 1. Define your input file element:
 ```
-<input type="file" id="file-input-element" multiple>
+<input type="file" id="my-element" multiple>
 ```
 2. Initialize **ApLouder**
 ```
 <script>
-    var aplouder = new Aplouder({ inputId: "file-input-element" });
+    var aplouder = new Aplouder({ id: "my-element" });
     aplouder.init();
 </script>
 ```
