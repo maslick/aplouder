@@ -7,6 +7,9 @@ enhanced multi-file uploader
  * shows size/filename on mouse hover
  * on-click image preview (use left/right/esc keys to navigate through the gallery)
  * support for non-image files
+ * multiple **aploader-s** on the same page
+ * only ~7kB minified
+ * no jquery, vanilla JS and/or ECMAScript 2015 (ES6)
 
 ![alt tag](screenshot1.png?raw=true "apLouder")
 
