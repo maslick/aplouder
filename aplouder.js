@@ -27,6 +27,8 @@ class Aplouder {
             '   <div class="ap-modal-content"></div>\n' +
             '</div>';
         this.inputFileEl.insertAdjacentHTML('afterend', template_html);
+
+        // hide the browse files button
         this.inputFileEl.style.width = "0.1px";
         this.inputFileEl.style.height = "0.1px";
         this.inputFileEl.style.opacity = "0";
@@ -162,11 +164,6 @@ class Aplouder {
         if (bytes < 1000) return "< 1kB";
         if (bytes >= 1000 && bytes <= 1000 * 1000) return Math.round(bytes / 1000) + "kB";
         return Math.round(bytes / 1000000 * 10) / 10 + "Mb";
-    }
-
-    static preventDefaults(e) {
-        e.preventDefault();
-        e.stopPropagation();
     }
 
     static addSlide(id, f) {
