@@ -9,7 +9,8 @@ enhanced multi-file uploader
  * support for non-image files
  * multiple **aploader-s** on the same page
  * only ~7kB minified
- * no jquery, vanilla JS and/or ECMAScript 2015 (ES6)
+ * no extra dependencies (jquery, etc.)
+ * vanilla JS and/or ECMAScript 2015 (ES6)
 
 ![alt tag](screenshot1.png?raw=true "apLouder")
 
@@ -27,7 +28,12 @@ enhanced multi-file uploader
 2. Initialize **ApLouder**
 ```
 <script>
-    var aplouder = new Aplouder({ id: "my-element" });
+    var aplouder = new Aplouder({
+        id: "my-element",
+        callback: function (f) {
+            console.log(f.src.name);
+        }
+    });
     aplouder.init();
 </script>
 ```

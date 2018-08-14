@@ -32,7 +32,12 @@
 </html>
 
 <script>
-    var aplouder1 = new Aplouder({ id: "el-1" });
+    var aplouder1 = new Aplouder({
+        id: "el-1",
+        callback: function (f) {
+            console.log(f.src.name);
+        }
+    });
     var aplouder2 = new Aplouder({ id: "el-2" });
     aplouder1.init();
     aplouder2.init();
