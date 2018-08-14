@@ -17,7 +17,7 @@ enhanced multi-file uploader
 ## Installation
 ```
 <link rel="stylesheet" href="aplouder.css">
-<script src="aplouder.js"></script>
+<script src="aplouder-vanilla.js"></script>
 ```
  
 ## Usage
