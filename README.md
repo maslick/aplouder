@@ -14,7 +14,7 @@ enhanced multi-file uploader
  * on-click image preview (use left/right/esc keys to navigate through the gallery)
  * support for non-image files
  * multiple **aploader-s** on the same page
- * only ~7kB minified
+ * only ~6kB minified
  * no extra dependencies (jquery, etc.)
  * vanilla JS and/or ECMAScript 2015 (ES6)
 
