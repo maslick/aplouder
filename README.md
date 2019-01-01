@@ -22,7 +22,7 @@ enhanced multi-file uploader
 
 
 ## Demo
-Live demo can be found [here](https://maslick.github.io/aplouder/).
+Live demo can be found [here](https://maslick.github.io/aplouder/demo/).
 
 ## Installation
 ```html
