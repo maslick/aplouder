@@ -9,15 +9,14 @@ enhanced multi-file uploader
 
 ## Features
  * enhances the standard HTML **input type="file"** element
- * works perfectly on desktop, mobile and tablet
- * creates an image gallery with thumbnails
+ * adds an image gallery with thumbnails
  * shows size/filename on mouse hover
  * on-click image preview (use left/right/esc keys to navigate through the gallery)
+ * 100% JavaScript
+ * works perfectly on desktop, mobile and tablet
  * support for non-image files
- * multiple **aploader-s** on the same page
- * small size (minified ~6 Kb)
  * no extra dependencies (jquery, etc.)
- * vanilla JS and/or ECMAScript 2015 (ES6)
+ * small size (minified ~6 Kb)
 
 ![alt tag](screenshot1.png?raw=true "apLouder")
 

@@ -1,6 +1,6 @@
 {
   "name": "@maslick/aplouder",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "enhanced multi-file uploader",
   "main": "index.js",
   "repository": {
@@ -8,14 +8,21 @@
     "url": "git+https://github.com/maslick/aplouder.git"
   },
   "keywords": [
-    "html",
-    "js",
-    "uploader",
     "multi-file",
+    "uploader",
+    "upload",
+    "multiple",
+    "file",
+    "file-input",
+    "file-uploader",
+    "input",
     "preview",
     "gallery",
+    "html",
+    "js",
     "javascript",
-    "es5"
+    "es5",
+    "es6"
   ],
   "author": "Pavel Maslov <pavel.masloff@gmail.com>",
   "license": "MIT",
