@@ -2,7 +2,7 @@
 [![npm (scoped)](https://img.shields.io/npm/v/@maslick/aplouder.svg)](https://www.npmjs.com/package/@maslick/aplouder)
 [![npm bundle size (minified)](https://img.shields.io/badge/minified-6Kb-green.svg)](https://www.npmjs.com/package/@maslick/aplouder)
 [![npm no dependencies](https://img.shields.io/badge/dependencies-none-green.svg)](https://www.npmjs.com/package/@maslick/radiaslider)
-[![npm download count](https://img.shields.io/npm/dt/@maslick/aplouder.svg)](https://www.npmjs.com/package/@maslick/aplouder)
+[![npm download count](https://img.shields.io/npm/dt/@maslick/aplouder.svg)](https://npmcharts.com/compare/@maslick/aplouder?minimal=true)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 enhanced multi-file uploader
