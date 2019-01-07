@@ -19,7 +19,7 @@ enhanced multi-file uploader
  * small size (minified ~6 Kb)
  * browser and Node.js friendly
 
-![alt tag](screenshot1.png?raw=true "apLouder")
+![aplouder](img/screenshot1.png?raw=true "apLouder")
 
 
 ## Demo
@@ -49,11 +49,11 @@ Live demo can be found [here](https://maslick.github.io/aplouder/demo/index.html
 </script>
 ```
 
-![alt tag](screenshot2.png?raw=true "apLouder")
+![aplouder](img/screenshot2.png?raw=true "apLouder")
 
 is identical to:
 
-![alt tag](screenshot3.png?raw=true "standard input element")
+![aplouder](img/screenshot3.png?raw=true "standard input element")
 
 
 ## License
