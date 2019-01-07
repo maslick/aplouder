@@ -1,6 +1,6 @@
 {
   "name": "@maslick/aplouder",
-  "version": "1.1.4",
+  "version": "1.2.0",
   "description": "enhanced multi-file uploader",
   "repository": {
     "type": "git",
@@ -26,7 +26,8 @@
     "es5",
     "es6",
     "browser",
-    "client"
+    "client",
+    "node.js"
   ],
   "author": "Pavel Maslov <pavel.masloff@gmail.com>",
   "license": "MIT",

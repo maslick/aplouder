@@ -17,6 +17,7 @@ enhanced multi-file uploader
  * support for non-image files
  * no extra dependencies (jquery, etc.)
  * small size (minified ~6 Kb)
+ * browser and Node.js friendly
 
 ![alt tag](screenshot1.png?raw=true "apLouder")
 
