@@ -56,6 +56,18 @@ is identical to:
 ![aplouder](img/screenshot3.png?raw=true "standard input element")
 
 
+## Node.js environment
+```js
+import Aplouder from "@maslick/aplouder";
+
+const aplouder = new Aplouder({
+    id: "el-1",
+    callback: function (f) {
+        console.log(f.src.name);
+    }
+});
+```
+
 ## License
 
 This project is licenced under the [MIT License](http://opensource.org/licenses/mit-license.html).

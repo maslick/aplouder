@@ -1,11 +1,12 @@
 {
   "name": "@maslick/aplouder",
-  "version": "1.2.1",
+  "version": "1.3.0",
   "description": "enhanced multi-file uploader",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/maslick/aplouder.git"
   },
+  "main": "index.js",
   "files": [
     "src/"
   ],
@@ -35,5 +36,11 @@
   "bugs": {
     "url": "https://github.com/maslick/aplouder/issues"
   },
-  "homepage": "https://github.com/maslick/aplouder#readme"
+  "homepage": "https://github.com/maslick/aplouder#readme",
+  "devDependencies": {
+    "babel-minify": "^0.5.0"
+  },
+  "scripts": {
+    "build": "minify src/aplouder.js --out-file aplouder.min.js"
+  }
 }
