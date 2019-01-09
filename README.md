@@ -68,6 +68,8 @@ const aplouder = new Aplouder({
 });
 ```
 
+For a React.js example see [this project](https://github.com/maslick/react-aplouder).
+
 ## License
 
 This project is licenced under the [MIT License](http://opensource.org/licenses/mit-license.html).
